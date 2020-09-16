@@ -7,14 +7,14 @@ from django.shortcuts import render
 from django.views import View
 from .forms import CourseraForm
 from .schemas import REVIEW_SCHEMA
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # decorators for deactive crf_token only for education goals
-
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
 
-class FormView(View):
+class FormView(LoginRequiredMixin, View):
 
     def get(self, request):
         # from pdb import set_trace; set_trace()
