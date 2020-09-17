@@ -2,7 +2,7 @@ REVIEW_SCHEMA = {
     '$schema': 'https://json-schema.org/#schema',
     'type': 'object',
     'properties': {
-        'feedback': {
+        'django_project': {
             'type': 'string',
             'minLength': 10,
             'macLength': 33,
@@ -13,5 +13,5 @@ REVIEW_SCHEMA = {
             'maximum': 100
         },
     },
-    'required': ['feedback', 'grade']
+    'required': ['django_project', 'grade']
 }

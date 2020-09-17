@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Write your feedback </title>
+</head>
+<body>
+
+<h1>Write your feedback</h1>
+
+<form method="post" enctype="multipart/form-data" action="/form/">
+    {% csrf_token %}
+    {{ form }}
+
+    <input type="submit" id="feedback-submit">
+
+</form>
+
+</body>
+</html>

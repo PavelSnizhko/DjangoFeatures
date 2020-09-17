@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Form reviews</h1>
+
+<form method="post" enctype="multipart/form-data" action="/feedback/add/">
+    {% csrf_token %}
+    {{ form }}
+{#    <label for="django_project-text"> Отзыв:</label>#}
+{#    <input id="django_project-text" type="text" name="text" required minlength="3" maxlength="3000">#}
+{##}
+{#    <label for="django_project-grade"> Оценка:</label>#}
+{#    <input id="django_project-grade" type="number" name="grade" required min="3" max="4">#}
+{##}
+{#    <label for="django_project-image"> Фотография:</label>#}
+{#    <input id="django_project-image" type="file" name="image">#}
+
+    <input type="submit" id="feedback-submit">
+
+    {{ text }}
+    {{ grade }}
+    {{ image }}
+</form>
+
+</body>
+</html>

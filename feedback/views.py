@@ -8,26 +8,24 @@ from django.views import View
 from .forms import CourseraForm
 from .schemas import REVIEW_SCHEMA
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.views.generic import CreateView
+from .models import FeedBack
 # decorators for deactive crf_token only for education goals
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
 
-class FormView(LoginRequiredMixin, View):
+class FeedbackCreateView(LoginRequiredMixin, CreateView):
+    model = FeedBack
+    fields = ['text', 'grade', 'subject']
+    success_url = '/feedback/add'
 
-    def get(self, request):
-        # from pdb import set_trace; set_trace()
-        form = CourseraForm()
-        return render(request, 'form.html', {'form': form})
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
-    def post(self, request):
-        form = CourseraForm(request.POST)
-        if form.is_valid():
-            context = form.cleaned_data
-            return render(request, 'form.html', context)
-        else:
-            return render(request, 'error.html', {'error': form.errors})
+
+
 
 
 @method_decorator(csrf_exempt, name='dispatch')

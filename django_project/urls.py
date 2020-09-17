@@ -1,4 +1,4 @@
-"""djangoProject URL Configuration
+"""django_project URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
@@ -18,5 +18,5 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('login/', auth_views.LoginView.as_view()),
-    path('form/', include('coursera_form.urls')),
+    path('feedback/', include('feedback.urls')),
 ]
